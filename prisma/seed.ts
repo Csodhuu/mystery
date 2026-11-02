@@ -103,7 +103,10 @@ async function seedCases(images: Map<string, string>) {
 async function seedAdmin() {
   const phone = process.env.ADMIN_PHONE;
   const password = process.env.ADMIN_PASSWORD;
-  if (!phone || !password) throw new Error("ADMIN_PHONE and ADMIN_PASSWORD must be set in .env");
+  if (!phone || !password) {
+    console.warn("  ⚠️  ADMIN_PHONE/ADMIN_PASSWORD тохируулаагүй тул админ үүсгэсэнгүй");
+    return;
+  }
   const admin = await prisma.user.create({
     data: { phone, name: "Админ", role: "ADMIN", passwordHash: hashPassword(password), ageConfirmedAt: new Date() },
   });
@@ -222,6 +225,11 @@ async function seedDemo() {
 }
 
 async function main() {
+  // --if-empty: used by the Vercel build, never wipes an already seeded database
+  if (process.argv.includes("--if-empty") && (await prisma.case.count()) > 0) {
+    console.log("ℹ️  Өгөгдөл байгаа тул seed алгаслаа");
+    return;
+  }
   console.log(`🌱 Seed эхэллээ (DEMO_MODE=${DEMO_MODE})`);
   await wipe();
   const images = writeImages();
