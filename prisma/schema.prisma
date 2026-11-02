@@ -1,0 +1,200 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Rarity {
+  COMMON
+  UNCOMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+enum OrderStatus {
+  IN_INVENTORY
+  DELIVERY_REQUESTED
+  SHIPPED
+  DELIVERED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+model User {
+  id             String       @id @default(cuid())
+  phone          String       @unique
+  name           String
+  role           Role         @default(USER)
+  /// MNT, integer
+  balance        Int          @default(0)
+  passwordHash   String?
+  /// Seeded fake account – hidden / disabled when DEMO_MODE=false
+  isDemo         Boolean      @default(false)
+  ageConfirmedAt DateTime?
+  createdAt      DateTime     @default(now())
+  seeds          ServerSeed[]
+  openings       Opening[]
+  orders         Order[]
+  payments       Payment[]
+}
+
+model OtpCode {
+  id        String   @id @default(cuid())
+  phone     String
+  codeHash  String
+  expiresAt DateTime
+  attempts  Int      @default(0)
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([phone, createdAt])
+}
+
+model Case {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String    @default("")
+  /// MNT
+  price       Int
+  image       String
+  color       String    @default("#22d3ee")
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  items       Item[]
+  openings    Opening[]
+}
+
+model Item {
+  id        String    @id @default(cuid())
+  caseId    String
+  case      Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  name      String
+  /// MNT
+  value     Int
+  rarity    Rarity
+  /// Probability in units of 0.001% (100000 = 100%)
+  weight    Int
+  stock     Int
+  image     String
+  sortOrder Int       @default(0)
+  openings  Opening[]
+  orders    Order[]
+  liveDrops LiveDrop[]
+
+  @@index([caseId])
+}
+
+/// Provably-fair seed pair. `hash` = sha256(seed) is shown before any opening;
+/// `seed` is revealed only after the user rotates to a new pair.
+model ServerSeed {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  seed       String
+  hash       String
+  clientSeed String
+  nonce      Int       @default(0)
+  active     Boolean   @default(true)
+  revealedAt DateTime?
+  createdAt  DateTime  @default(now())
+  openings   Opening[]
+
+  @@index([userId, active])
+}
+
+model Opening {
+  id             String     @id @default(cuid())
+  userId         String
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  caseId         String
+  case           Case       @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  itemId         String
+  item           Item       @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  price          Int
+  itemValue      Int
+  serverSeedId   String
+  serverSeed     ServerSeed @relation(fields: [serverSeedId], references: [id], onDelete: Cascade)
+  clientSeed     String
+  nonce          Int
+  /// 0..99999 roll derived from HMAC
+  roll           Int
+  /// Probability table used: [{ id, name, weight }]
+  table          Json
+  idempotencyKey String
+  createdAt      DateTime   @default(now())
+  order          Order?
+
+  @@unique([userId, idempotencyKey])
+  @@index([createdAt])
+  @@index([userId, createdAt])
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  openingId   String      @unique
+  opening     Opening     @relation(fields: [openingId], references: [id], onDelete: Cascade)
+  itemId      String
+  item        Item        @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  status      OrderStatus @default(IN_INVENTORY)
+  fullName    String?
+  phone       String?
+  district    String?
+  khoroo      String?
+  address     String?
+  /// Demo delivery job may advance this order automatically
+  autoAdvance Boolean     @default(false)
+  requestedAt DateTime?
+  shippedAt   DateTime?
+  deliveredAt DateTime?
+  createdAt   DateTime    @default(now())
+
+  @@index([userId, status])
+  @@index([status])
+}
+
+model Payment {
+  id          String        @id @default(cuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Int
+  provider    String
+  status      PaymentStatus @default(PENDING)
+  invoiceId   String?
+  qrText      String?
+  /// Mock only: auto-succeed after a few seconds
+  autoSucceed Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  settledAt   DateTime?
+
+  @@index([userId, createdAt])
+  @@index([status])
+}
+
+/// Feed for the live ticker. Real openings write isDemo=false; the demo bot writes isDemo=true.
+model LiveDrop {
+  id        Int      @id @default(autoincrement())
+  userName  String
+  itemId    String
+  item      Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  isDemo    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isDemo, id])
+}

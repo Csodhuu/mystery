@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --font-sans: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  background: #07080d;
+  color: #e5e7eb;
+}
+
+body {
+  background-image: radial-gradient(1200px 600px at 10% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(168, 85, 247, 0.08), transparent 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-panel/80 backdrop-blur;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-neon text-black shadow-[0_0_24px_rgba(34,211,238,0.45)] hover:brightness-110 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-panel2 text-gray-200 hover:border-neon/60 hover:text-white;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-500;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line bg-panel2 px-3 py-2.5 text-sm text-white outline-none
+      placeholder:text-gray-500 focus:border-neon/70 focus:ring-2 focus:ring-neon/20;
+  }
+  .label {
+    @apply mb-1 block text-xs font-medium uppercase tracking-wide text-gray-400;
+  }
+  .h1 {
+    @apply text-2xl font-extrabold tracking-tight text-white sm:text-3xl;
+  }
+  .muted {
+    @apply text-sm text-gray-400;
+  }
+  .table-base {
+    @apply w-full text-left text-sm;
+  }
+  .table-base th {
+    @apply whitespace-nowrap border-b border-line px-3 py-2 text-xs font-semibold uppercase tracking-wide text-gray-400;
+  }
+  .table-base td {
+    @apply border-b border-line/60 px-3 py-2 align-middle;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
