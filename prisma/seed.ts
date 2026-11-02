@@ -101,8 +101,9 @@ async function seedCases(images: Map<string, string>) {
 }
 
 async function seedAdmin() {
-  const phone = process.env.ADMIN_PHONE;
-  const password = process.env.ADMIN_PASSWORD;
+  // DEMO_MODE falls back to the documented demo credentials (see README)
+  const phone = process.env.ADMIN_PHONE || (DEMO_MODE ? "88000000" : undefined);
+  const password = process.env.ADMIN_PASSWORD || (DEMO_MODE ? "admin-demo-pass" : undefined);
   if (!phone || !password) {
     console.warn("  ⚠️  ADMIN_PHONE/ADMIN_PASSWORD тохируулаагүй тул админ үүсгэсэнгүй");
     return;
@@ -226,7 +227,7 @@ async function seedDemo() {
 
 async function main() {
   // --if-empty: used by the Vercel build, never wipes an already seeded database
-  if (process.argv.includes("--if-empty") && (await prisma.case.count()) > 0) {
+  if (process.argv.includes("--if-empty") && (await prisma.user.count()) > 0) {
     console.log("ℹ️  Өгөгдөл байгаа тул seed алгаслаа");
     return;
   }

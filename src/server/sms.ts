@@ -2,6 +2,7 @@ import { createHash, randomInt, timingSafeEqual } from "node:crypto";
 import { prisma } from "./db";
 import { AppError } from "./errors";
 import { DEMO_MODE } from "../lib/env";
+import { secret } from "./auth";
 
 export interface SmsProvider {
   send(phone: string, text: string): Promise<void>;
@@ -30,7 +31,7 @@ const MAX_ATTEMPTS = 5;
 export const PHONE_RE = /^[6-9]\d{7}$/;
 
 const hashCode = (phone: string, code: string) =>
-  createHash("sha256").update(`${phone}:${code}:${process.env.SESSION_SECRET}`).digest("hex");
+  createHash("sha256").update(`${phone}:${code}:${secret()}`).digest("hex");
 
 export async function requestOtp(phone: string) {
   if (!PHONE_RE.test(phone)) throw new AppError("BAD_PHONE", "Утасны дугаар буруу байна (8 оронтой)");

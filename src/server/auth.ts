@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { prisma } from "./db";
 import { AppError } from "./errors";
@@ -7,10 +7,12 @@ import { DEMO_MODE } from "../lib/env";
 const COOKIE = "hs_session";
 const MAX_AGE = 60 * 60 * 24 * 30;
 
-function secret() {
+export function secret() {
   const s = process.env.SESSION_SECRET;
-  if (!s) throw new Error("SESSION_SECRET is not set");
-  return s;
+  if (s) return s;
+  // DEMO_MODE without a configured secret: derive one from the (private) database URL
+  if (DEMO_MODE && process.env.DATABASE_URL) return createHash("sha256").update(`session:${process.env.DATABASE_URL}`).digest("hex");
+  throw new Error("SESSION_SECRET is not set");
 }
 
 const sign = (payload: string) => createHmac("sha256", secret()).update(payload).digest("base64url");
