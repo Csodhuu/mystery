@@ -1,7 +1,12 @@
 import { recentDrops } from "@/server/live";
+import { runDemoTick } from "@/server/demo-jobs";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+export const maxDuration = 30;
+
+// Serverless: end the stream before the function limit; EventSource reconnects on its own.
+const STREAM_MS = process.env.VERCEL ? 25_000 : 0;
 
 /** Server-Sent Events: initial batch, then new drops as they appear (DB-polled, so it works across processes). */
 export async function GET(req: Request) {
@@ -19,6 +24,7 @@ export async function GET(req: Request) {
       send("init", initial);
       timer = setInterval(async () => {
         try {
+          if (process.env.VERCEL) await runDemoTick();
           const fresh = await recentDrops(lastId, 20);
           if (fresh.length) {
             lastId = fresh[0].id;
@@ -27,14 +33,16 @@ export async function GET(req: Request) {
         } catch {
           /* transient DB error – try next tick */
         }
-      }, 1500);
-      req.signal.addEventListener("abort", () => {
+      }, process.env.VERCEL ? 3000 : 1500);
+      const end = () => {
         closed = true;
         clearInterval(timer);
         try {
           controller.close();
         } catch {}
-      });
+      };
+      req.signal.addEventListener("abort", end);
+      if (STREAM_MS) setTimeout(end, STREAM_MS);
     },
     cancel() {
       closed = true;

@@ -27,6 +27,25 @@ export function startDemoJobs() {
   setTimeout(loop, 3_000);
 }
 
+const t = globalThis as unknown as { __demoBotAt?: number; __demoDeliveryAt?: number };
+
+/**
+ * Serverless variant of startDemoJobs (no long-lived timers on Vercel): called from the
+ * live-feed poll, runs each job at most once per interval per instance.
+ */
+export async function runDemoTick() {
+  if (!DEMO_MODE) return;
+  const now = Date.now();
+  if (now - (t.__demoBotAt ?? 0) > 10_000) {
+    t.__demoBotAt = now;
+    await botDrop().catch((e) => console.error("[DEMO] bot drop", e));
+  }
+  if (now - (t.__demoDeliveryAt ?? 0) > 30_000) {
+    t.__demoDeliveryAt = now;
+    await advanceDemoDeliveries().catch((e) => console.error("[DEMO] delivery job", e));
+  }
+}
+
 /** One fake drop by a random dummy user, rolled with the real probability table. Does not touch stock or balances. */
 export async function botDrop() {
   const [users, cases] = await Promise.all([
