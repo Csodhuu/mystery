@@ -7,7 +7,8 @@ import { sfx } from "./sfx";
 
 export type ReelItem = { id: string; name: string; value: number; rarity: RarityKey; image: string };
 
-const DURATION = 6.6;
+export const DURATION = 6.6;
+export const LIGHTNING_DURATION = 1.8;
 /** Strong ease-out: fast start, long deceleration. */
 const EASE: [number, number, number, number] = [0.08, 0.82, 0.17, 1];
 
@@ -17,6 +18,9 @@ export function Reel({
   winIndex,
   offset,
   onDone,
+  duration = DURATION,
+  compact = false,
+  ticks = true,
 }: {
   items: Record<string, ReelItem>;
   ids: string[];
@@ -24,6 +28,11 @@ export function Reel({
   /** fraction of a card width (-0.42..0.42) – where under the marker the reel stops */
   offset: number;
   onDone: () => void;
+  duration?: number;
+  /** Smaller cards for stacked multi-open reels */
+  compact?: boolean;
+  /** Only one of several simultaneous reels should play tick sounds */
+  ticks?: boolean;
 }) {
   const wrap = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -32,8 +41,8 @@ export function Reel({
 
   useLayoutEffect(() => {
     const w = wrap.current?.clientWidth ?? 800;
-    setDims({ w, card: w < 520 ? 104 : 148 });
-  }, []);
+    setDims({ w, card: compact ? (w < 520 ? 76 : 104) : w < 520 ? 104 : 148 });
+  }, [compact]);
 
   useEffect(() => {
     if (!dims) return;
@@ -42,27 +51,31 @@ export function Reel({
     const center = dims.w / 2;
     const target = -(winIndex * step + dims.card / 2 + offset * dims.card) + center;
     let lastIdx = -1;
+    const onUpdate = (v: number) => {
+      const idx = Math.floor((center - v) / step);
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        if (ticks) sfx().tick();
+      }
+    };
     x.set(center - dims.card * 2); // start with a few cards visible right of the marker
     const controls = animate(x, target, {
-      duration: DURATION,
+      duration,
       ease: EASE,
-      onUpdate: (v) => {
-        const idx = Math.floor((center - v) / step);
-        if (idx !== lastIdx) {
-          lastIdx = idx;
-          sfx().tick();
-        }
-      },
+      onUpdate,
       onComplete: () => {
         setLanded(true);
         setTimeout(onDone, 450);
       },
     });
     return () => controls.stop();
-  }, [dims, winIndex, offset, onDone, x]);
+  }, [dims, winIndex, offset, onDone, x, duration, ticks]);
 
   return (
-    <div ref={wrap} className="relative h-[200px] overflow-hidden rounded-2xl border border-line bg-black/40 sm:h-[230px]">
+    <div
+      ref={wrap}
+      className={`relative overflow-hidden rounded-2xl border border-line bg-black/40 ${compact ? "h-[110px] sm:h-[150px]" : "h-[200px] sm:h-[230px]"}`}
+    >
       {/* edge fades */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-32" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-32" />
@@ -96,10 +109,10 @@ export function Reel({
               >
                 <div className="flex-1" style={{ background: `radial-gradient(circle at 50% 60%, ${r.glow}, transparent 70%)` }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={it.image} alt="" className="h-full w-full object-contain p-2" draggable={false} />
+                  <img src={it.image} alt="" className="h-full w-full rounded-lg object-cover p-1.5" draggable={false} />
                 </div>
                 <div className="px-2 pb-2">
-                  <div className="truncate text-[11px] font-semibold text-white">{it.name}</div>
+                  <div className={`truncate font-semibold text-white ${compact ? "text-[10px]" : "text-[11px]"}`}>{it.name}</div>
                   <div className="text-[11px] font-bold" style={{ color: r.color }}>
                     {mnt(it.value)}
                   </div>

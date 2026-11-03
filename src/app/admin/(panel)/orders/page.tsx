@@ -5,7 +5,7 @@ import { RarityBadge } from "@/components/ItemCard";
 import { StatusSelect } from "./StatusSelect";
 import type { OrderStatus } from "@prisma/client";
 
-const STATUSES = ["DELIVERY_REQUESTED", "SHIPPED", "DELIVERED", "IN_INVENTORY"] as const;
+const STATUSES = ["DELIVERY_REQUESTED", "SHIPPED", "DELIVERED", "IN_INVENTORY", "SOLD"] as const;
 
 export default async function AdminOrders({ searchParams }: { searchParams: Promise<{ status?: string; page?: string }> }) {
   const sp = await searchParams;

@@ -5,6 +5,7 @@ import { getActiveSeed } from "./seeds";
 import { isValidTable, resolveOpening } from "../lib/fairness";
 import { buildReel, type Reel } from "../lib/reel";
 import type { RarityKey } from "../lib/rarity";
+import { applyMode, type OpenMode } from "../lib/modes";
 
 type LockedItem = { id: string; name: string; value: number; rarity: RarityKey; weight: number; stock: number; image: string };
 
@@ -22,12 +23,13 @@ export async function openCase(opts: {
   userId: string;
   slug: string;
   idempotencyKey: string;
+  mode?: OpenMode;
   /** Seed script only: backdate the record */
   at?: Date;
   /** Seed script only: don't publish to the live ticker */
   silent?: boolean;
 }): Promise<OpenResult> {
-  const { userId, slug, idempotencyKey } = opts;
+  const { userId, slug, idempotencyKey, mode = "normal" } = opts;
   if (!/^[\w-]{8,64}$/.test(idempotencyKey)) throw new AppError("BAD_KEY", "Idempotency key буруу");
 
   const replay = await findExisting(userId, idempotencyKey);
@@ -40,20 +42,22 @@ export async function openCase(opts: {
         if (!kase || !kase.isActive) throw new AppError("NOT_FOUND", "Хайрцаг олдсонгүй", 404);
 
         // Lock every item row of this case: stock check + decrement are serialized per case.
-        const items = await tx.$queryRaw<LockedItem[]>`
+        const caseItems = await tx.$queryRaw<LockedItem[]>`
           SELECT id, name, value, rarity::text AS rarity, weight, stock, image
           FROM "Item" WHERE "caseId" = ${kase.id}
           ORDER BY "sortOrder" ASC, id ASC
           FOR UPDATE`;
-        if (!isValidTable(items)) throw new AppError("BAD_TABLE", "Хайрцагны магадлал буруу тохируулагдсан", 409);
-        if (items.some((i) => i.stock <= 0)) {
+        if (!isValidTable(caseItems)) throw new AppError("BAD_TABLE", "Хайрцагны магадлал буруу тохируулагдсан", 409);
+        if (caseItems.some((i) => i.stock <= 0)) {
           throw new AppError("OUT_OF_STOCK", "Зарим бараа дууссан тул энэ хайрцгийг одоогоор нээх боломжгүй", 409);
         }
+        // Jester / Boost: the roll runs against the mode's table and price.
+        const { items, price } = applyMode(caseItems, kase.price, mode);
 
         // Atomic, conditional balance deduction.
         const debited = await tx.user.updateMany({
-          where: { id: userId, balance: { gte: kase.price } },
-          data: { balance: { decrement: kase.price } },
+          where: { id: userId, balance: { gte: price } },
+          data: { balance: { decrement: price } },
         });
         if (debited.count === 0) throw new AppError("INSUFFICIENT_BALANCE", "Үлдэгдэл хүрэлцэхгүй байна", 402);
 
@@ -72,7 +76,8 @@ export async function openCase(opts: {
             userId,
             caseId: kase.id,
             itemId: entry.id,
-            price: kase.price,
+            price,
+            mode,
             itemValue: entry.value,
             serverSeedId: seed.id,
             clientSeed: seed.clientSeed,
@@ -128,4 +133,47 @@ async function findExisting(userId: string, idempotencyKey: string): Promise<Ope
     fairness: { serverSeedHash: o.serverSeed.hash, clientSeed: o.clientSeed, nonce: o.nonce, roll: o.roll },
     replay: true,
   };
+}
+
+export const MAX_MULTI_OPEN = 3;
+
+/**
+ * Opens the same case `count` times. Each opening is its own idempotent transaction
+ * (key `${idempotencyKey}-${i}`), so a retried request never charges twice.
+ */
+export async function openCases(opts: {
+  userId: string;
+  slug: string;
+  idempotencyKey: string;
+  count: number;
+  mode: OpenMode;
+}): Promise<OpenResult[]> {
+  const { userId, slug, idempotencyKey, mode } = opts;
+  const count = Math.floor(opts.count);
+  if (!(count >= 1 && count <= MAX_MULTI_OPEN)) throw new AppError("BAD_COUNT", `Нэг удаад 1-${MAX_MULTI_OPEN} хайрцаг нээнэ`);
+  if (!/^[\w-]{8,60}$/.test(idempotencyKey)) throw new AppError("BAD_KEY", "Idempotency key буруу");
+
+  // Fail up front instead of opening only part of the batch.
+  const [kase, user, done] = await Promise.all([
+    prisma.case.findUnique({ where: { slug }, include: { items: true } }),
+    prisma.user.findUnique({ where: { id: userId }, select: { balance: true } }),
+    prisma.opening.count({ where: { userId, idempotencyKey: { startsWith: `${idempotencyKey}-` } } }),
+  ]);
+  if (!kase) throw new AppError("NOT_FOUND", "Хайрцаг олдсонгүй", 404);
+  if (done === 0 && (user?.balance ?? 0) < applyMode(kase.items, kase.price, mode).price * count) {
+    throw new AppError("INSUFFICIENT_BALANCE", "Үлдэгдэл хүрэлцэхгүй байна", 402);
+  }
+
+  const results: OpenResult[] = [];
+  for (let i = 0; i < count; i++) {
+    try {
+      results.push(await openCase({ userId, slug, mode, idempotencyKey: `${idempotencyKey}-${i}` }));
+    } catch (e) {
+      // A concurrent spend or stock-out mid-batch: keep what was already opened.
+      if (results.length > 0) break;
+      throw e;
+    }
+  }
+  const balance = results[results.length - 1].balance;
+  return results.map((r) => ({ ...r, balance }));
 }

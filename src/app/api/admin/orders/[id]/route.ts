@@ -13,6 +13,10 @@ export const PATCH = route(async (req: Request, ctx: { params: Promise<{ id: str
   if (!FLOW.includes(status as (typeof FLOW)[number])) throw new AppError("BAD_STATUS", "Төлөв буруу");
   const s = status as (typeof FLOW)[number];
   const now = new Date();
+  // A sold order was already paid out; moving it back would let it be sold twice.
+  const current = await prisma.order.findUnique({ where: { id }, select: { status: true } });
+  if (!current) throw new AppError("NOT_FOUND", "Захиалга олдсонгүй", 404);
+  if (current.status === "SOLD") throw new AppError("SOLD", "Зарагдсан барааны төлөвийг өөрчлөх боломжгүй", 409);
   const order = await prisma.order.update({
     where: { id },
     data: {

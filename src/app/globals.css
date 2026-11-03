@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: dark;
-  --font-sans: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-nunito), "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
 }
 
 html,
@@ -14,22 +14,23 @@ body {
 }
 
 body {
-  background-image: radial-gradient(1200px 600px at 10% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
-    radial-gradient(900px 500px at 100% 0%, rgba(168, 85, 247, 0.08), transparent 60%);
+  background-image: radial-gradient(1200px 600px at 10% -10%, rgba(34, 211, 238, 0.1), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(168, 85, 247, 0.1), transparent 60%),
+    radial-gradient(800px 500px at 50% 110%, rgba(245, 158, 11, 0.06), transparent 60%);
   background-attachment: fixed;
   min-height: 100vh;
 }
 
 @layer components {
   .card {
-    @apply rounded-2xl border border-line bg-panel/80 backdrop-blur;
+    @apply rounded-3xl border border-white/[0.06] bg-panel/80 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] backdrop-blur;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-extrabold transition
       disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn bg-neon text-black shadow-[0_0_24px_rgba(34,211,238,0.45)] hover:brightness-110 active:scale-[0.98];
+    @apply btn bg-gradient-to-b from-[#5eeaff] to-neon text-black shadow-[0_6px_0_#0e8fa3,0_0_28px_rgba(34,211,238,0.4)] hover:brightness-110 active:translate-y-[3px] active:shadow-[0_3px_0_#0e8fa3,0_0_20px_rgba(34,211,238,0.4)];
   }
   .btn-ghost {
     @apply btn border border-line bg-panel2 text-gray-200 hover:border-neon/60 hover:text-white;
@@ -45,7 +46,7 @@ body {
     @apply mb-1 block text-xs font-medium uppercase tracking-wide text-gray-400;
   }
   .h1 {
-    @apply text-2xl font-extrabold tracking-tight text-white sm:text-3xl;
+    @apply text-2xl font-black tracking-tight text-white sm:text-3xl;
   }
   .muted {
     @apply text-sm text-gray-400;

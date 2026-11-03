@@ -3,6 +3,7 @@ import { getUser } from "@/server/auth";
 import { DEMO_MODE } from "@/lib/env";
 import { BalanceBadge } from "./Balance";
 import { NavLinks, LogoutButton } from "./NavLinks";
+import { Mascot } from "./Mascot";
 
 export async function Header() {
   const user = await getUser();
@@ -18,7 +19,7 @@ export async function Header() {
     <header className="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
         <Link href="/" className="flex items-center gap-2 text-lg font-black tracking-tight text-white">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-neon to-rare text-black shadow-[0_0_18px_rgba(34,211,238,.5)]">▣</span>
+          <Mascot size={38} />
           <span>
             Хайрцаг<span className="text-neon">.mn</span>
           </span>

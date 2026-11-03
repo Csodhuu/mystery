@@ -1,6 +1,9 @@
 "use client";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { emitBalance } from "@/components/Balance";
+import { Mascot } from "@/components/Mascot";
+import Link from "next/link";
 import { ItemCard } from "@/components/ItemCard";
 import type { RarityKey } from "@/lib/rarity";
 import { dateTime, mnt, ORDER_STATUS_COLOR, ORDER_STATUS_LABEL, UB_DISTRICTS } from "@/lib/format";
@@ -8,6 +11,10 @@ import { dateTime, mnt, ORDER_STATUS_COLOR, ORDER_STATUS_LABEL, UB_DISTRICTS } f
 type Order = {
   id: string;
   status: keyof typeof ORDER_STATUS_LABEL;
+  itemId: string;
+  /** Balance credited if sold: the value at the time it was won */
+  sellValue: number;
+  soldFor: number | null;
   createdAt: string;
   requestedAt: string | null;
   shippedAt: string | null;
@@ -16,7 +23,7 @@ type Order = {
   item: { name: string; value: number; rarity: RarityKey; image: string };
 };
 
-const TABS = ["ALL", "IN_INVENTORY", "DELIVERY_REQUESTED", "SHIPPED", "DELIVERED"] as const;
+const TABS = ["ALL", "IN_INVENTORY", "DELIVERY_REQUESTED", "SHIPPED", "DELIVERED", "SOLD"] as const;
 
 export function InventoryList({ orders, openId, defaultPhone, defaultName }: { orders: Order[]; openId: string | null; defaultPhone: string; defaultName: string }) {
   const router = useRouter();
@@ -27,6 +34,26 @@ export function InventoryList({ orders, openId, defaultPhone, defaultName }: { o
   const [busy, setBusy] = useState(false);
 
   const shown = useMemo(() => (tab === "ALL" ? orders : orders.filter((o) => o.status === tab)), [orders, tab]);
+  const inInventory = useMemo(() => orders.filter((o) => o.status === "IN_INVENTORY"), [orders]);
+  // Everything but the first (newest) copy of each item.
+  const duplicates = useMemo(() => {
+    const seen = new Set<string>();
+    return inInventory.filter((o) => (seen.has(o.itemId) ? true : (seen.add(o.itemId), false)));
+  }, [inInventory]);
+  const sum = (list: Order[]) => list.reduce((s, o) => s + o.sellValue, 0);
+
+  const sell = async (list: Order[], confirmText: string) => {
+    if (list.length === 0 || busy || !window.confirm(confirmText)) return;
+    setBusy(true);
+    setErr(null);
+    const r = await fetch("/api/inventory/sell", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ids: list.map((o) => o.id) }) });
+    const d = await r.json();
+    setBusy(false);
+    if (!r.ok) return setErr(d.message);
+    emitBalance(d.balance);
+    router.refresh();
+  };
+
   const counts = useMemo(() => Object.fromEntries(TABS.map((t) => [t, t === "ALL" ? orders.length : orders.filter((o) => o.status === t).length])), [orders]);
 
   const submit = async (e: React.FormEvent) => {
@@ -55,8 +82,36 @@ export function InventoryList({ orders, openId, defaultPhone, defaultName }: { o
         ))}
       </div>
 
+      {inInventory.length > 0 && (
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          {duplicates.length > 0 && (
+            <button
+              className="btn-ghost text-sm"
+              disabled={busy}
+              onClick={() => sell(duplicates, `Давхардсан ${duplicates.length} барааг ${mnt(sum(duplicates))}-өөр зарах уу? Бараа бүрээс нэгийг нь үлдээнэ.`)}
+            >
+              ♻️ Давхардлыг зарах ({duplicates.length}) · {mnt(sum(duplicates))}
+            </button>
+          )}
+          <button
+            className="btn-ghost text-sm"
+            disabled={busy}
+            onClick={() => sell(inInventory, `Агуулахад байгаа бүх ${inInventory.length} барааг ${mnt(sum(inInventory))}-өөр зарах уу?`)}
+          >
+            💰 Бүгдийг зарах ({inInventory.length}) · {mnt(sum(inInventory))}
+          </button>
+          {err && !modal && <p className="text-sm font-semibold text-rose-400">{err}</p>}
+        </div>
+      )}
+
       {shown.length === 0 ? (
-        <div className="card p-10 text-center text-gray-500">Бараа алга. Хайрцаг нээж бараа хожоорой!</div>
+        <div className="card flex flex-col items-center gap-4 p-10 pt-24 text-center text-gray-400">
+          <Mascot mood="sleepy" size={130} say="Энд юу ч алга... 💤" />
+          <div>Хайрцаг нээж бараа хожоорой!</div>
+          <Link href="/" className="btn-primary">
+            🎁 Хайрцаг нээх
+          </Link>
+        </div>
       ) : (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {shown.map((o) => (
@@ -69,9 +124,16 @@ export function InventoryList({ orders, openId, defaultPhone, defaultName }: { o
                 <span className="text-gray-500">{dateTime(o.createdAt).slice(5)}</span>
               </div>
               {o.status === "IN_INVENTORY" ? (
-                <button className="btn-primary py-2 text-xs" onClick={() => setModal(o)}>
-                  🚚 Хүргүүлэх
-                </button>
+                <div className="grid grid-cols-2 gap-2">
+                  <button className="btn-primary px-1 py-2 text-xs" onClick={() => setModal(o)}>
+                    🚚 Хүргүүлэх
+                  </button>
+                  <button className="btn-ghost px-1 py-2 text-xs" disabled={busy} onClick={() => sell([o], `${o.item.name}-г ${mnt(o.sellValue)}-өөр зарах уу?`)}>
+                    💰 {mnt(o.sellValue)}
+                  </button>
+                </div>
+              ) : o.status === "SOLD" ? (
+                <div className="text-[11px] text-gray-500">+{mnt(o.soldFor ?? 0)} үлдэгдэлд орсон</div>
               ) : (
                 <div className="text-[11px] leading-snug text-gray-500" title={o.address ?? ""}>
                   <div className="line-clamp-2">{o.address}</div>

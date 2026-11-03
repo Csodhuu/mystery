@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { randomInt, randomUUID } from "node:crypto";
-import { mkdirSync, writeFileSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync, rmSync } from "node:fs";
 import path from "node:path";
 import { prisma } from "../src/server/db";
 import { openCase } from "../src/server/opening";
@@ -62,7 +62,9 @@ function writeImages() {
     c.items.forEach((it, i) => {
       const file = `${c.slug}-${i + 1}.svg`;
       writeFileSync(path.join(dir, "items", file), itemSvg(it.icon, it.rarity));
-      paths.set(`${c.slug}:${i}`, `/generated/items/${file}`);
+      // Prefer the real product photo (public/items, credits in prisma/data/image-credits.json); the SVG is the fallback.
+      const photo = `/items/${c.slug}-${i + 1}.webp`;
+      paths.set(`${c.slug}:${i}`, existsSync(path.join(process.cwd(), "public", photo)) ? photo : `/generated/items/${file}`);
     });
   }
   return paths;

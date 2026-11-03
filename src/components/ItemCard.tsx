@@ -30,15 +30,15 @@ export function ItemCard({
   const r = RARITY[rarity];
   return (
     <div
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-line bg-panel2 transition hover:-translate-y-0.5"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/5 bg-panel2 transition hover:-translate-y-1"
       style={{ borderBottom: `3px solid ${r.color}`, boxShadow: `0 8px 28px -14px ${r.glow}` }}
     >
       {weight !== undefined && (
         <span className="absolute right-2 top-2 z-10 rounded-md bg-black/60 px-1.5 py-0.5 text-[11px] font-semibold text-white">{pct(weight)}</span>
       )}
-      <div className="relative aspect-square" style={{ background: `radial-gradient(circle at 50% 60%, ${r.glow}, transparent 70%)` }}>
+      <div className="relative aspect-square p-2" style={{ background: `radial-gradient(circle at 50% 60%, ${r.glow}, transparent 70%)` }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt={name} className="h-full w-full object-contain p-2 transition group-hover:scale-105" draggable={false} />
+        <img src={image} alt={name} loading="lazy" className="h-full w-full rounded-xl object-cover transition duration-300 group-hover:scale-105" draggable={false} />
       </div>
       <div className={compact ? "p-2" : "p-3"}>
         <div className="line-clamp-2 min-h-[2.5em] text-xs font-semibold leading-tight text-white sm:text-sm">{name}</div>

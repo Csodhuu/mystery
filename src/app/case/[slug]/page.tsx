@@ -3,9 +3,9 @@ import Link from "next/link";
 import { prisma } from "@/server/db";
 import { getUser } from "@/server/auth";
 import { getActiveSeed } from "@/server/seeds";
-import { ItemCard } from "@/components/ItemCard";
 import { CaseOpener } from "@/components/opening/CaseOpener";
 import { mnt } from "@/lib/format";
+import { applyMode, OPEN_MODES } from "@/lib/modes";
 
 export default async function CasePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -15,6 +15,13 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   const seed = user ? await getActiveSeed(prisma, user.id) : null;
   const items = kase.items.map((i) => ({ id: i.id, name: i.name, value: i.value, rarity: i.rarity, image: i.image }));
   const display = [...kase.items].sort((a, b) => b.value - a.value);
+  // Price + odds per mode, computed with the same function the opening transaction uses.
+  const modes = Object.fromEntries(
+    OPEN_MODES.map((m) => {
+      const t = applyMode(kase.items, kase.price, m);
+      return [m, { price: t.price, weights: Object.fromEntries(t.items.map((i) => [i.id, i.weight])) }];
+    }),
+  ) as Record<(typeof OPEN_MODES)[number], { price: number; weights: Record<string, number> }>;
 
   return (
     <div className="space-y-8">
@@ -33,7 +40,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
 
       <CaseOpener
         slug={kase.slug}
-        price={kase.price}
+        modes={modes}
         color={kase.color}
         image={kase.image}
         items={items}
@@ -41,16 +48,8 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         balance={user?.balance ?? 0}
         outOfStock={kase.items.some((i) => i.stock <= 0)}
         fairness={seed ? { hash: seed.hash, clientSeed: seed.clientSeed, nonce: seed.nonce } : null}
+        display={display.map((i) => ({ id: i.id, name: i.name, value: i.value, rarity: i.rarity, image: i.image, stock: i.stock }))}
       />
-
-      <section>
-        <h2 className="mb-3 text-lg font-bold text-white">Хайрцагт байгаа бараа</h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {display.map((i) => (
-            <ItemCard key={i.id} name={i.name} value={i.value} rarity={i.rarity} image={i.image} weight={i.weight} stock={i.stock} />
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

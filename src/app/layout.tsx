@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { LiveTicker } from "@/components/LiveTicker";
@@ -11,13 +12,15 @@ export const metadata: Metadata = {
   description: "Хайрцаг нээж, бодит бараа хожоорой. Шударга байдал баталгаатай (provably fair).",
 };
 
+const nunito = Nunito({ subsets: ["latin", "cyrillic", "cyrillic-ext"], weight: ["400", "600", "700", "800", "900"], variable: "--font-nunito", display: "swap" });
+
 export const viewport: Viewport = { themeColor: "#07080d", width: "device-width", initialScale: 1 };
 
 export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="mn">
+    <html lang="mn" className={nunito.variable}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         {DEMO_MODE && (
           <div className="bg-[repeating-linear-gradient(45deg,#f59e0b,#f59e0b_12px,#d97706_12px,#d97706_24px)] py-1 text-center text-xs font-black uppercase tracking-widest text-black">
@@ -45,6 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <Link href="/fairness/verify" className="hover:text-white">
                 Шалгах
+              </Link>
+              <Link href="/credits" className="hover:text-white">
+                Зургийн эх сурвалж
               </Link>
             </div>
           </div>

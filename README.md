@@ -53,7 +53,7 @@ The background jobs start from `src/instrumentation.ts` and only when `DEMO_MODE
 ### What the seed creates (`prisma/seed.ts`)
 
 - The 3 cases exactly as specified (`prisma/data/cases.ts`). Probabilities are validated to sum to 100%, and EV/RTP is printed.
-- Local placeholder SVG images (rarity gradient + icon) in `public/generated/`. No external image URLs.
+- Product photos in `public/items/<case>-<n>.webp` (free-licensed, from Wikimedia Commons; authors and licenses in `prisma/data/image-credits.json`, shown on `/credits`). Items without a photo fall back to a generated SVG in `public/generated/`. No external image URLs.
 - 1 admin from `.env`.
 - Demo mode only:
   - 50 dummy users with Mongolian names.
@@ -75,6 +75,8 @@ Add balance to the current user · log in as any dummy user · create a pending 
   - The user can set their own client seed. The nonce increases by one per opening.
   - `roll = floor(int(first 13 hex of HMAC_SHA256(serverSeed, "clientSeed:nonce")) × 100000 / 2^52)`, mapped onto the cumulative table. Weights are stored as integers in units of 0.001%, so 100% = 100,000.
   - Rotating the seed reveals the old one. `/fairness/verify` recomputes everything in the browser with Web Crypto and checks it against the stored hash, roll and the probability table snapshot saved with each opening.
+- **Multi-open & modes** (`src/lib/modes.ts`): open x1/x2/x3 of a case at once (each opening is its own transaction with key `<key>-<i>`). **Jester** makes every item equally likely and raises the price so the RTP stays the same as the normal case; **Boost** doubles the price and the odds of every item worth more than the base price (cheaper items shrink to keep 100%). The modified table is what gets rolled, charged and snapshotted on the opening (`Opening.mode`), so verification works unchanged. **Lightning** only speeds up the animation.
+- **Selling items** (`src/server/selling.ts`): an `IN_INVENTORY` order can be sold back for balance at the value it had when won (`Opening.itemValue`); the item goes back into stock and the order becomes `SOLD` (admins can't move it back). The inventory has "sell duplicates" (keeps one of each item) and "sell all", and the win popup has a sell button. A conditional status update makes each order sellable once, even under concurrent requests.
 - **Atomic transaction:** the case's item rows are locked (`FOR UPDATE`), every item must have stock > 0, the balance is debited with a conditional `UPDATE … WHERE balance >= price`, the nonce is reserved, and the stock is decremented, all in one DB transaction.
 - **Idempotency:** each click sends an `Idempotency-Key`, backed by a unique `(userId, idempotencyKey)` constraint. Repeated or concurrent requests with the same key return the original result and are charged once.
 - **Payments:** `settlePayment()` only moves a `PENDING` payment, so the balance is credited exactly once whatever the callback order.

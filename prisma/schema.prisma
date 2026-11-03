@@ -25,6 +25,8 @@ enum OrderStatus {
   DELIVERY_REQUESTED
   SHIPPED
   DELIVERED
+  /// Sold back for balance; the item went back into stock
+  SOLD
 }
 
 enum PaymentStatus {
@@ -126,6 +128,8 @@ model Opening {
   itemId         String
   item           Item       @relation(fields: [itemId], references: [id], onDelete: Cascade)
   price          Int
+  /// normal | jester | boost – the table snapshot below already reflects it
+  mode           String     @default("normal")
   itemValue      Int
   serverSeedId   String
   serverSeed     ServerSeed @relation(fields: [serverSeedId], references: [id], onDelete: Cascade)
@@ -163,6 +167,9 @@ model Order {
   requestedAt DateTime?
   shippedAt   DateTime?
   deliveredAt DateTime?
+  soldAt      DateTime?
+  /// MNT credited to the balance when sold
+  soldFor     Int?
   createdAt   DateTime    @default(now())
 
   @@index([userId, status])

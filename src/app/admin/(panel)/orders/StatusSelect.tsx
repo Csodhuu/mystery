@@ -7,6 +7,13 @@ export function StatusSelect({ id, status }: { id: string; status: string }) {
   const router = useRouter();
   const [s, setS] = useState(status);
   const [busy, setBusy] = useState(false);
+  if (status === "SOLD") {
+    return (
+      <span className="text-xs font-semibold" style={{ color: ORDER_STATUS_COLOR.SOLD }}>
+        {ORDER_STATUS_LABEL.SOLD}
+      </span>
+    );
+  }
   return (
     <select
       className="input w-40 py-1.5 text-xs font-semibold"
@@ -24,11 +31,13 @@ export function StatusSelect({ id, status }: { id: string; status: string }) {
         }
       }}
     >
-      {Object.entries(ORDER_STATUS_LABEL).map(([k, v]) => (
-        <option key={k} value={k}>
-          {v}
-        </option>
-      ))}
+      {Object.entries(ORDER_STATUS_LABEL)
+        .filter(([k]) => k !== "SOLD")
+        .map(([k, v]) => (
+          <option key={k} value={k}>
+            {v}
+          </option>
+        ))}
     </select>
   );
 }

@@ -26,6 +26,7 @@ export const ORDER_STATUS_LABEL: Record<string, string> = {
   DELIVERY_REQUESTED: "Хүргэлт хүссэн",
   SHIPPED: "Илгээсэн",
   DELIVERED: "Хүргэгдсэн",
+  SOLD: "Зарсан",
 };
 
 export const ORDER_STATUS_COLOR: Record<string, string> = {
@@ -33,6 +34,7 @@ export const ORDER_STATUS_COLOR: Record<string, string> = {
   DELIVERY_REQUESTED: "#f59e0b",
   SHIPPED: "#a855f7",
   DELIVERED: "#22c55e",
+  SOLD: "#6b7280",
 };
 
 export const PAYMENT_STATUS_LABEL: Record<string, string> = {

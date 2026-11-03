@@ -1,0 +1,810 @@
+[
+ {
+  "image": "/items/starter-1.webp",
+  "item": "Стикер багц",
+  "title": "Laptop with stickers.jpg",
+  "author": "Prtksxna",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Laptop_with_stickers.jpg"
+ },
+ {
+  "image": "/items/starter-2.webp",
+  "item": "Түлхүүрийн оосор",
+  "title": "Noam + Ezra's Lanyard.png",
+  "author": "Unknown",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Noam_%2B_Ezra%27s_Lanyard.png"
+ },
+ {
+  "image": "/items/starter-3.webp",
+  "item": "USB-C кабель",
+  "title": "USB-C cable connected to a powerbank.jpg",
+  "author": "Logant547",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:USB-C_cable_connected_to_a_powerbank.jpg"
+ },
+ {
+  "image": "/items/starter-4.webp",
+  "item": "Lightning кабель",
+  "title": "Apple Lightning Cable End (48727307142).jpg",
+  "author": "brett jordan",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Apple_Lightning_Cable_End_(48727307142).jpg"
+ },
+ {
+  "image": "/items/starter-5.webp",
+  "item": "Дэлгэцийн хамгаалалт шил",
+  "title": "Screen protector.png",
+  "author": "unwire.hk",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Screen_protector.png"
+ },
+ {
+  "image": "/items/starter-6.webp",
+  "item": "Чихэвчний гэр",
+  "title": "Earbuds with UKCA marking.jpg",
+  "author": "159753",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Earbuds_with_UKCA_marking.jpg"
+ },
+ {
+  "image": "/items/starter-7.webp",
+  "item": "Утасны оосор",
+  "title": "Cell phone with charms and stickers.jpg",
+  "author": "No machine-readable author provided. Junglizt1210 assumed (based on copyright claims).",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cell_phone_with_charms_and_stickers.jpg"
+ },
+ {
+  "image": "/items/starter-9.webp",
+  "item": "Цүнхний зүүлт",
+  "title": "Keychain with text \"Encryption is key\".jpg",
+  "author": "Rohini",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Keychain_with_text_%22Encryption_is_key%22.jpg"
+ },
+ {
+  "image": "/items/starter-10.webp",
+  "item": "Мини гар чийдэн",
+  "title": "Flashlight.jpg",
+  "author": "KMJ at German Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Flashlight.jpg"
+ },
+ {
+  "image": "/items/starter-11.webp",
+  "item": "Жижиг хулганы дэвсгэр",
+  "title": "Logitech Red mouse on a mouse pad.jpg",
+  "author": "mycurrency.com",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Logitech_Red_mouse_on_a_mouse_pad.jpg"
+ },
+ {
+  "image": "/items/starter-12.webp",
+  "item": "Үзэгний багц",
+  "title": "Macro Biro writing2.jpg",
+  "author": "Daniel Schwen",
+  "license": "CC BY-SA 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Macro_Biro_writing2.jpg"
+ },
+ {
+  "image": "/items/starter-13.webp",
+  "item": "Утасны холдер",
+  "title": "DIY tablet smartphone stand 2.jpg",
+  "author": "Klaus-Dieter Keller",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:DIY_tablet_smartphone_stand_2.jpg"
+ },
+ {
+  "image": "/items/starter-14.webp",
+  "item": "Утасны гэр",
+  "title": "IPhone case wikipedia.jpg",
+  "author": "HNordeen (WMF)",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:IPhone_case_wikipedia.jpg"
+ },
+ {
+  "image": "/items/starter-15.webp",
+  "item": "Машины утасны холдер",
+  "title": "Smartphone mounted on car dashboard during a drive in a modern vehicle with a focus on navigation use.jpg",
+  "author": "Shixart1985",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Smartphone_mounted_on_car_dashboard_during_a_drive_in_a_modern_vehicle_with_a_focus_on_navigation_use.jpg"
+ },
+ {
+  "image": "/items/starter-16.webp",
+  "item": "Selfie stick",
+  "title": "Completely expanded Selfie Stick.jpg",
+  "author": "河中桥",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Completely_expanded_Selfie_Stick.jpg"
+ },
+ {
+  "image": "/items/starter-17.webp",
+  "item": "USB флаш 32GB",
+  "title": "2023 Pendrive'y Verbatim Store ‘n’ Click 16 GB (1).jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023_Pendrive%27y_Verbatim_Store_%E2%80%98n%E2%80%99_Click_16_GB_(1).jpg"
+ },
+ {
+  "image": "/items/starter-18.webp",
+  "item": "Мини сэнс",
+  "title": "USB fans 1.jpg",
+  "author": "ΒΟΥ",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:USB_fans_1.jpg"
+ },
+ {
+  "image": "/items/starter-19.webp",
+  "item": "LED тууз 5м",
+  "title": "How to wire LED-strip.JPG",
+  "author": "Dmitry G",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:How_to_wire_LED-strip.JPG"
+ },
+ {
+  "image": "/items/starter-20.webp",
+  "item": "Термос аяга",
+  "title": "Термос (1).jpg",
+  "author": "Schekinov Alexey Victorovich",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%D0%A2%D0%B5%D1%80%D0%BC%D0%BE%D1%81_(1).jpg"
+ },
+ {
+  "image": "/items/starter-21.webp",
+  "item": "Хурдан цэнэглэгч",
+  "title": "USB power adapter for Apple iPod, Model A1205, by Foxlink Technology Ltd-1048.jpg",
+  "author": "Raimond Spekking",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:USB_power_adapter_for_Apple_iPod,_Model_A1205,_by_Foxlink_Technology_Ltd-1048.jpg"
+ },
+ {
+  "image": "/items/starter-22.webp",
+  "item": "Утастай чихэвч",
+  "title": "Earphones BW 2011-12-10 15-49-08.JPG",
+  "author": "Berthold Werner",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Earphones_BW_2011-12-10_15-49-08.JPG"
+ },
+ {
+  "image": "/items/starter-23.webp",
+  "item": "Ширээний ухаалаг гэрэл",
+  "title": "Battery powered LED desk lamp-7420.jpg",
+  "author": "Raimond Spekking",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Battery_powered_LED_desk_lamp-7420.jpg"
+ },
+ {
+  "image": "/items/starter-24.webp",
+  "item": "Утасгүй цэнэглэгч",
+  "title": "Wireless Charging Pad 2018.jpg",
+  "author": "Seawhelan",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Wireless_Charging_Pad_2018.jpg"
+ },
+ {
+  "image": "/items/starter-25.webp",
+  "item": "Мини чанга яригч",
+  "title": "Brionvega WearIT TS217 bluetooth speaker.jpg",
+  "author": "Brion Vega",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brionvega_WearIT_TS217_bluetooth_speaker.jpg"
+ },
+ {
+  "image": "/items/starter-26.webp",
+  "item": "Power bank 10000mAh",
+  "title": "2023 Powerbank Green Cell PowerPlay 20 (4).jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023_Powerbank_Green_Cell_PowerPlay_20_(4).jpg"
+ },
+ {
+  "image": "/items/starter-27.webp",
+  "item": "Утасгүй чихэвч",
+  "title": "Samsung Galaxy Buds FE and Samsung Galaxy Buds2 Pro.jpg",
+  "author": "Gannu03",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_Buds_FE_and_Samsung_Galaxy_Buds2_Pro.jpg"
+ },
+ {
+  "image": "/items/starter-28.webp",
+  "item": "Gaming хулгана",
+  "title": "2023 Mysz komputerowa Logitech G903 Lightspeed.jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023_Mysz_komputerowa_Logitech_G903_Lightspeed.jpg"
+ },
+ {
+  "image": "/items/starter-29.webp",
+  "item": "Bluetooth чанга яригч",
+  "title": "JBL Flip 3 bluetooth speaker (DSCF2653).jpg",
+  "author": "Trougnouf",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:JBL_Flip_3_bluetooth_speaker_(DSCF2653).jpg"
+ },
+ {
+  "image": "/items/starter-30.webp",
+  "item": "Ухаалаг бугуйвч",
+  "title": "Screenshot at Jun 26 16-27-31.png",
+  "author": "HEALBE",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Screenshot_at_Jun_26_16-27-31.png"
+ },
+ {
+  "image": "/items/starter-31.webp",
+  "item": "Механик гар",
+  "title": "Mechanical keyboard example.jpg",
+  "author": "Thanasis Termitzoglou",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mechanical_keyboard_example.jpg"
+ },
+ {
+  "image": "/items/starter-32.webp",
+  "item": "Ухаалаг цаг",
+  "title": "Garmin-Smartwatch Vivoactive HR.JPG",
+  "author": "C.Stadler/Bwag",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Garmin-Smartwatch_Vivoactive_HR.JPG"
+ },
+ {
+  "image": "/items/starter-33.webp",
+  "item": "JBL Flip 6",
+  "title": "JBL Flip 3 bluetooth speaker (DSCF2653).jpg",
+  "author": "Trougnouf",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:JBL_Flip_3_bluetooth_speaker_(DSCF2653).jpg"
+ },
+ {
+  "image": "/items/starter-34.webp",
+  "item": "AirPods 4",
+  "title": "AirPods (cropped).jpg",
+  "author": "Maurizio Pesce from Milan, Italia",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:AirPods_(cropped).jpg"
+ },
+ {
+  "image": "/items/premium-1.webp",
+  "item": "Премиум утасны гэр",
+  "title": "Blackview A60 Smartphone Android mobile phone and folio case.jpg",
+  "author": "Acabashi",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Blackview_A60_Smartphone_Android_mobile_phone_and_folio_case.jpg"
+ },
+ {
+  "image": "/items/premium-2.webp",
+  "item": "Утасгүй цэнэглэгч",
+  "title": "Wireless Charging Pad 2018.jpg",
+  "author": "Seawhelan",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Wireless_Charging_Pad_2018.jpg"
+ },
+ {
+  "image": "/items/premium-3.webp",
+  "item": "Хурдан цэнэглэгч 65W",
+  "title": "Lazos GaN Charger 30W L-AC-G30.jpg",
+  "author": "Qurren",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lazos_GaN_Charger_30W_L-AC-G30.jpg"
+ },
+ {
+  "image": "/items/premium-4.webp",
+  "item": "Power bank 20000mAh",
+  "title": "Anker power bank and cable.jpg",
+  "author": "Saucy",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Anker_power_bank_and_cable.jpg"
+ },
+ {
+  "image": "/items/premium-5.webp",
+  "item": "Утастай gaming чихэвч",
+  "title": "Xbox One Chat Headset.jpg",
+  "author": "SeriphSeraph",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Xbox_One_Chat_Headset.jpg"
+ },
+ {
+  "image": "/items/premium-6.webp",
+  "item": "Ширээний LED гэрэл",
+  "title": "Battery powered LED desk lamp-7420.jpg",
+  "author": "Raimond Spekking",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Battery_powered_LED_desk_lamp-7420.jpg"
+ },
+ {
+  "image": "/items/premium-7.webp",
+  "item": "Мини чанга яригч",
+  "title": "Brionvega WearIT TS217 bluetooth speaker.jpg",
+  "author": "Brion Vega",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brionvega_WearIT_TS217_bluetooth_speaker.jpg"
+ },
+ {
+  "image": "/items/premium-8.webp",
+  "item": "USB-C хаб",
+  "title": "USB-C Digital AV Multiport Adapter.jpeg",
+  "author": "Thefreeencyclopedia1",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:USB-C_Digital_AV_Multiport_Adapter.jpeg"
+ },
+ {
+  "image": "/items/premium-9.webp",
+  "item": "Ухаалаг чийдэн",
+  "title": "Zigbee E27 Bulb.jpg",
+  "author": "Danielrosehill",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zigbee_E27_Bulb.jpg"
+ },
+ {
+  "image": "/items/premium-10.webp",
+  "item": "Bluetooth чанга яригч",
+  "title": "JBL Flip 3 bluetooth speaker (DSCF2653).jpg",
+  "author": "Trougnouf",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:JBL_Flip_3_bluetooth_speaker_(DSCF2653).jpg"
+ },
+ {
+  "image": "/items/premium-11.webp",
+  "item": "Gaming хулгана",
+  "title": "2023 Mysz komputerowa Logitech G903 Lightspeed.jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023_Mysz_komputerowa_Logitech_G903_Lightspeed.jpg"
+ },
+ {
+  "image": "/items/premium-12.webp",
+  "item": "Утасгүй чихэвч",
+  "title": "Samsung Galaxy Buds FE and Samsung Galaxy Buds2 Pro.jpg",
+  "author": "Gannu03",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_Buds_FE_and_Samsung_Galaxy_Buds2_Pro.jpg"
+ },
+ {
+  "image": "/items/premium-13.webp",
+  "item": "Ухаалаг бугуйвч",
+  "title": "Screenshot at Jun 26 16-27-31.png",
+  "author": "HEALBE",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Screenshot_at_Jun_26_16-27-31.png"
+ },
+ {
+  "image": "/items/premium-14.webp",
+  "item": "Вэбкам 1080p",
+  "title": "Fancy webcam on computer screen.jpg",
+  "author": "Peter Placzek",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Fancy_webcam_on_computer_screen.jpg"
+ },
+ {
+  "image": "/items/premium-15.webp",
+  "item": "SSD 1TB",
+  "title": "2017 Dysk SSD Plextor M8Pe(Y) 256GB.jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2017_Dysk_SSD_Plextor_M8Pe(Y)_256GB.jpg"
+ },
+ {
+  "image": "/items/premium-16.webp",
+  "item": "Механик гар",
+  "title": "Mechanical keyboard example.jpg",
+  "author": "Thanasis Termitzoglou",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mechanical_keyboard_example.jpg"
+ },
+ {
+  "image": "/items/premium-17.webp",
+  "item": "Микрофон",
+  "title": "AKG C214 Condenser microphone.jpg",
+  "author": "Lucasbosch",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:AKG_C214_Condenser_microphone.jpg"
+ },
+ {
+  "image": "/items/premium-18.webp",
+  "item": "Kindle",
+  "title": "2023 Amazon Kindle Paperwhite (2).jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023_Amazon_Kindle_Paperwhite_(2).jpg"
+ },
+ {
+  "image": "/items/premium-19.webp",
+  "item": "Ухаалаг цаг",
+  "title": "Garmin-Smartwatch Vivoactive HR.JPG",
+  "author": "C.Stadler/Bwag",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Garmin-Smartwatch_Vivoactive_HR.JPG"
+ },
+ {
+  "image": "/items/premium-20.webp",
+  "item": "Robot тоос сорогч",
+  "title": "Robot vacuum cleaner concept study 1994.jpg",
+  "author": "TiHa",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Robot_vacuum_cleaner_concept_study_1994.jpg"
+ },
+ {
+  "image": "/items/premium-21.webp",
+  "item": "Монитор 24\"",
+  "title": "Dell monitor and keyboard.jpg",
+  "author": "Takuya Oikawa",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dell_monitor_and_keyboard.jpg"
+ },
+ {
+  "image": "/items/premium-22.webp",
+  "item": "JBL Charge 5",
+  "title": "JBL Charge 4 2v2.jpg",
+  "author": "Singlespeedfahrer",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:JBL_Charge_4_2v2.jpg"
+ },
+ {
+  "image": "/items/premium-23.webp",
+  "item": "Sony WH-1000XM5",
+  "title": "Bose QuietComfort 25 Acoustic Noise Cancelling Headphones with Carry Case.jpg",
+  "author": "Florian Fuchs",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bose_QuietComfort_25_Acoustic_Noise_Cancelling_Headphones_with_Carry_Case.jpg"
+ },
+ {
+  "image": "/items/premium-24.webp",
+  "item": "AirPods 4",
+  "title": "AirPods (cropped).jpg",
+  "author": "Maurizio Pesce from Milan, Italia",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:AirPods_(cropped).jpg"
+ },
+ {
+  "image": "/items/premium-25.webp",
+  "item": "Nintendo Switch 2",
+  "title": "Nintendo-Switch-Console-Docked-wJoyConRB.jpg",
+  "author": "Evan-Amos",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-Console-Docked-wJoyConRB.jpg"
+ },
+ {
+  "image": "/items/premium-26.webp",
+  "item": "Apple Watch",
+  "title": "Apple Watch Series 7; January 2022 (01).jpg",
+  "author": "MIKI Yoshihito",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Apple_Watch_Series_7;_January_2022_(01).jpg"
+ },
+ {
+  "image": "/items/premium-27.webp",
+  "item": "iPad",
+  "title": "IPad Air.png",
+  "author": "Zach Vega",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:IPad_Air.png"
+ },
+ {
+  "image": "/items/premium-28.webp",
+  "item": "Dyson сэнс",
+  "title": "Dyson, IFA 2015 - 21025972790.jpg",
+  "author": "dambranslv",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dyson,_IFA_2015_-_21025972790.jpg"
+ },
+ {
+  "image": "/items/premium-29.webp",
+  "item": "GoPro",
+  "title": "GoPro Hero 9 Black - Front 2.jpg",
+  "author": "Greyfiveys",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:GoPro_Hero_9_Black_-_Front_2.jpg"
+ },
+ {
+  "image": "/items/premium-30.webp",
+  "item": "PlayStation 5",
+  "title": "PlayStation 5 and DualSense with transparent background.png",
+  "author": "Soberian (this retouched file)Osh33m (original photograph)",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:PlayStation_5_and_DualSense_with_transparent_background.png"
+ },
+ {
+  "image": "/items/premium-31.webp",
+  "item": "DJI дрон",
+  "title": "DJI - Drohne Mavic 4 Pro.JPG",
+  "author": "C.Stadler/Bwag",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:DJI_-_Drohne_Mavic_4_Pro.JPG"
+ },
+ {
+  "image": "/items/premium-32.webp",
+  "item": "MacBook Air",
+  "title": "M2 Macbook Air Starlight model.jpg",
+  "author": "KKPCW（Kyu3）",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:M2_Macbook_Air_Starlight_model.jpg"
+ },
+ {
+  "image": "/items/premium-33.webp",
+  "item": "Samsung Galaxy S26",
+  "title": "Samsung Galaxy S23 Ultra, 512 GB, Lavender 20230416 HOF00318 RAW-Export cens.png",
+  "author": "PantheraLeo1359531",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_S23_Ultra,_512_GB,_Lavender_20230416_HOF00318_RAW-Export_cens.png"
+ },
+ {
+  "image": "/items/premium-34.webp",
+  "item": "iPhone 18",
+  "title": "IPhone XS and iPhone 11 Pro together.jpg",
+  "author": "TzarN64",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:IPhone_XS_and_iPhone_11_Pro_together.jpg"
+ },
+ {
+  "image": "/items/gaming-1.webp",
+  "item": "XL хулганы дэвсгэр",
+  "title": "Logitech-g502 (13971829039).jpg",
+  "author": "Sinchen.Lin",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Logitech-g502_(13971829039).jpg"
+ },
+ {
+  "image": "/items/gaming-2.webp",
+  "item": "Gaming хулгана",
+  "title": "2023 Mysz komputerowa Logitech G903 Lightspeed.jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023_Mysz_komputerowa_Logitech_G903_Lightspeed.jpg"
+ },
+ {
+  "image": "/items/gaming-3.webp",
+  "item": "RGB хулганы дэвсгэр",
+  "title": "HP mouse and mousepad 20060803.jpg",
+  "author": "Lovecz",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:HP_mouse_and_mousepad_20060803.jpg"
+ },
+ {
+  "image": "/items/gaming-4.webp",
+  "item": "Controller холдер",
+  "title": "PlayStation 5 and DualSense.jpg",
+  "author": "Osh33m",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:PlayStation_5_and_DualSense.jpg"
+ },
+ {
+  "image": "/items/gaming-5.webp",
+  "item": "Чихэвчний тавиур",
+  "title": "Devialet 200 remote & Headphone stand (2015-04-12 19.22.38 by c-g.).jpg",
+  "author": "c-g.",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Devialet_200_remote_%26_Headphone_stand_(2015-04-12_19.22.38_by_c-g.).jpg"
+ },
+ {
+  "image": "/items/gaming-6.webp",
+  "item": "Gaming бээлий",
+  "title": "Person in fingerless gloves (Unsplash).jpg",
+  "author": "James Sutton jamessutton_photography",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Person_in_fingerless_gloves_(Unsplash).jpg"
+ },
+ {
+  "image": "/items/gaming-7.webp",
+  "item": "Steam карт 50,000₮",
+  "title": "Steam icon logo.svg",
+  "author": "Steam",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Steam_icon_logo.svg"
+ },
+ {
+  "image": "/items/gaming-8.webp",
+  "item": "Keycap багц",
+  "title": "Cherry MX Keycap - R2 (Translucent Black) (40799371503).jpg",
+  "author": "SparkFun Electronics from Boulder, USA",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cherry_MX_Keycap_-_R2_(Translucent_Black)_(40799371503).jpg"
+ },
+ {
+  "image": "/items/gaming-9.webp",
+  "item": "USB микрофон",
+  "title": "Rode NT-USB.jpg",
+  "author": "Nicolas Rück (WMDE)",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rode_NT-USB.jpg"
+ },
+ {
+  "image": "/items/gaming-10.webp",
+  "item": "Gaming чихэвч",
+  "title": "Logitech G35 side view.jpg",
+  "author": "Simon A. Eugster",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Logitech_G35_side_view.jpg"
+ },
+ {
+  "image": "/items/gaming-11.webp",
+  "item": "Механик гар",
+  "title": "Mechanical keyboard example.jpg",
+  "author": "Thanasis Termitzoglou",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mechanical_keyboard_example.jpg"
+ },
+ {
+  "image": "/items/gaming-12.webp",
+  "item": "Вэбкам 1080p",
+  "title": "Fancy webcam on computer screen.jpg",
+  "author": "Peter Placzek",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Fancy_webcam_on_computer_screen.jpg"
+ },
+ {
+  "image": "/items/gaming-13.webp",
+  "item": "Steam карт 150,000₮",
+  "title": "Steam icon logo.svg",
+  "author": "Steam",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Steam_icon_logo.svg"
+ },
+ {
+  "image": "/items/gaming-14.webp",
+  "item": "RGB гэрэл",
+  "title": "RGB small LED lights.jpg",
+  "author": "Sha247",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:RGB_small_LED_lights.jpg"
+ },
+ {
+  "image": "/items/gaming-15.webp",
+  "item": "Controller",
+  "title": "Microsoft-Xbox-One-Console-Set-wKinect.jpg",
+  "author": "Evan-Amos",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Microsoft-Xbox-One-Console-Set-wKinect.jpg"
+ },
+ {
+  "image": "/items/gaming-16.webp",
+  "item": "SSD 2TB",
+  "title": "256GB 2230 NVME SSD + 256GB NGFF SSD.jpg",
+  "author": "User5515",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:256GB_2230_NVME_SSD_%2B_256GB_NGFF_SSD.jpg"
+ },
+ {
+  "image": "/items/gaming-17.webp",
+  "item": "Стрим микрофон",
+  "title": "Shure SM7.jpg",
+  "author": "The Midnite Wolf",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Shure_SM7.jpg"
+ },
+ {
+  "image": "/items/gaming-18.webp",
+  "item": "Wireless gaming хулгана",
+  "title": "Logitech-g502 (13971829039).jpg",
+  "author": "Sinchen.Lin",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Logitech-g502_(13971829039).jpg"
+ },
+ {
+  "image": "/items/gaming-19.webp",
+  "item": "Gaming чихэвч Pro",
+  "title": "Razer Dadeland Mall, Miami Florida, February 2023 - Headphones.jpg",
+  "author": "Phillip Pessar",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Razer_Dadeland_Mall,_Miami_Florida,_February_2023_-_Headphones.jpg"
+ },
+ {
+  "image": "/items/gaming-20.webp",
+  "item": "Racing жолоо",
+  "title": "Thrustmaster Ferrari GT Experience steering wheel, front.jpg",
+  "author": "FreeMediaKid!",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Thrustmaster_Ferrari_GT_Experience_steering_wheel,_front.jpg"
+ },
+ {
+  "image": "/items/gaming-21.webp",
+  "item": "Stream Deck",
+  "title": "Elgato Stream Deck +.jpg",
+  "author": "TaurusEmerald",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Elgato_Stream_Deck_%2B.jpg"
+ },
+ {
+  "image": "/items/gaming-22.webp",
+  "item": "27\" 165Hz монитор",
+  "title": "ASUS curved monitor 20170603.jpg",
+  "author": "Devan Hsu",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:ASUS_curved_monitor_20170603.jpg"
+ },
+ {
+  "image": "/items/gaming-23.webp",
+  "item": "Gaming сандал",
+  "title": "Gamescom 2009 - Fujitsu (5154).jpg",
+  "author": "Raimond Spekking",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gamescom_2009_-_Fujitsu_(5154).jpg"
+ },
+ {
+  "image": "/items/gaming-24.webp",
+  "item": "Meta Quest 3",
+  "title": "Visitor using a Meta Quest 3 VR headset at IPP Greifswald 2025.jpg",
+  "author": "Siarhei Besarab",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Visitor_using_a_Meta_Quest_3_VR_headset_at_IPP_Greifswald_2025.jpg"
+ },
+ {
+  "image": "/items/gaming-25.webp",
+  "item": "Nintendo Switch 2",
+  "title": "Nintendo-Switch-Console-Docked-wJoyConRB.jpg",
+  "author": "Evan-Amos",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Nintendo-Switch-Console-Docked-wJoyConRB.jpg"
+ },
+ {
+  "image": "/items/gaming-26.webp",
+  "item": "Steam Deck OLED",
+  "title": "Steam Deck (front).png",
+  "author": "Liam Dawe/GamingOnLinux, PNG version by VulcanSphere",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Steam_Deck_(front).png"
+ },
+ {
+  "image": "/items/gaming-27.webp",
+  "item": "PlayStation 5",
+  "title": "PlayStation 5 and DualSense with transparent background.png",
+  "author": "Soberian (this retouched file)Osh33m (original photograph)",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:PlayStation_5_and_DualSense_with_transparent_background.png"
+ },
+ {
+  "image": "/items/gaming-28.webp",
+  "item": "Xbox Series X",
+  "title": "Xbox Series S with controller.jpg",
+  "author": "AsmodeanUnderscore",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Xbox_Series_S_with_controller.jpg"
+ },
+ {
+  "image": "/items/gaming-29.webp",
+  "item": "Gaming ширээ",
+  "title": "Brown and beige, Computer desk, Rostov-on-Don, Russia.jpg",
+  "author": "Vyacheslav Argenberg",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brown_and_beige,_Computer_desk,_Rostov-on-Don,_Russia.jpg"
+ },
+ {
+  "image": "/items/gaming-30.webp",
+  "item": "RTX 5070 видео карт",
+  "title": "Gigabyte GeForce RTX 3090 Eagle OC 24G, 24576 MiB GDDR6X Front 20201114 DSC5880.jpg",
+  "author": "PantheraLeo1359531",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gigabyte_GeForce_RTX_3090_Eagle_OC_24G,_24576_MiB_GDDR6X_Front_20201114_DSC5880.jpg"
+ },
+ {
+  "image": "/items/gaming-31.webp",
+  "item": "OLED 34\" монитор",
+  "title": "Monitor ultrawide 21 9.jpg",
+  "author": "Lipsbaterando",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Monitor_ultrawide_21_9.jpg"
+ },
+ {
+  "image": "/items/gaming-32.webp",
+  "item": "Gaming laptop",
+  "title": "Alienware m15x Laptop.jpg",
+  "author": "Amazon",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Alienware_m15x_Laptop.jpg"
+ },
+ {
+  "image": "/items/gaming-33.webp",
+  "item": "Бүтэн Gaming PC",
+  "title": "2025 Wnętrze komputera PC.jpg",
+  "author": "Jacek Halicki",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2025_Wn%C4%99trze_komputera_PC.jpg"
+ },
+ {
+  "image": "/items/gaming-34.webp",
+  "item": "Бүтэн Gaming Setup (PC + монитор + сандал)",
+  "title": "Dual monitor setup in a gaming room with keyboard and mouse in focus.jpg",
+  "author": "Shixart1985",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dual_monitor_setup_in_a_gaming_room_with_keyboard_and_mouse_in_focus.jpg"
+ }
+]

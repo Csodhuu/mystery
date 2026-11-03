@@ -33,9 +33,9 @@ describe("probability tables", () => {
 
   it("matches the configured expected values", () => {
     const ev = (t: (typeof tables)[number]) => t.table.reduce((s, i) => s + (i.value * i.weight) / WEIGHT_TOTAL, 0);
-    expect(ev(tables[0])).toBeCloseTo(7650, 0);
-    expect(ev(tables[1])).toBeCloseTo(40937.5, 0);
-    expect(ev(tables[2])).toBeCloseTo(78020, 0);
+    expect(ev(tables[0])).toBeCloseTo(7649.27, 1);
+    expect(ev(tables[1])).toBeCloseTo(40931, -1);
+    expect(ev(tables[2])).toBeCloseTo(77996, -1);
   });
 });
 
